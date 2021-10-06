@@ -15,7 +15,7 @@ public class CommentClass {
      * @return the repeated String plus another digit
      */
     public String commentedPartly(char characterToRepeat,int repeatCount){
-        String result="";
+        String result="1";
 
         for(int i=0;i<repeatCount;i++){
             result+=characterToRepeat;
