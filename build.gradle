@@ -8,6 +8,17 @@ version '1.0-SNAPSHOT'
 repositories {
     mavenCentral()
 }
+plugins {
+    id "org.sonarqube" version "3.3"
+}
+
+sonarqube {
+    properties {
+        property "sonar.projectKey", "compf_DocCoverageTest"
+        property "sonar.organization", "compf"
+        property "sonar.host.url", "https://sonarcloud.io"
+    }
+}
 
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
