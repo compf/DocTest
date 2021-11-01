@@ -23,7 +23,7 @@ public class CommentClass {
         return result+uncommentedPrivate(0);
     }
     public boolean notCommennted(double num,double denom){
-        return num/denom>Math.PI;
+        return num/denom>Math.PI+1;
     }
     private int uncommentedPrivate(int identity){
         return  identity;
