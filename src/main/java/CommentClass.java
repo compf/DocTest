@@ -3,7 +3,7 @@ public class CommentClass {
      * Sums up the two numbers given by parameters
      * @param firstNumber The first number which will be used
      * @param secondNumber the second number which will be added to the first number
-     * @return a floating point number that is the sum
+     * @return a floating point number that is the sum and I
      */
     public double commented(int firstNumber,double secondNumber){
         return firstNumber+secondNumber;
