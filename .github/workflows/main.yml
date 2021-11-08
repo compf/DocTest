@@ -28,7 +28,7 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run:
-          git clone -b testing https://github.com/compf/JavaDocEvaluator.git &&  cd JavaDocEvaluator && npm install && npm run launch $GITHUB_WORKSPACE
+          npm install javadoc_evaluator@1.0.0 && npm run javadoc_evaluator $GITHUB_WORKSPACE
          
          
 
