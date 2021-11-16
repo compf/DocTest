@@ -28,7 +28,7 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run:
-         npm install -g  javadoc_evaluator &&  find /usr/local/lib/node_modules/javadoc_evaluator/build/src && npx javadoc_evaluator $GITHUB_WORKSPACE         
+         npm install -g  javadoc_evaluator &&   node  javadoc_evaluator $GITHUB_WORKSPACE         
          
 
       # Runs a set of commands using the runners shell
