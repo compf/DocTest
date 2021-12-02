@@ -1,7 +1,7 @@
 {
     "include":["*.java"],
     "exclude":[],
-    "global_threshold":78
+    "global_threshold":25
 
 
 }
