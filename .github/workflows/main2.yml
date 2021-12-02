@@ -37,4 +37,4 @@ jobs:
       - name: Javadoc_evaluator
   # You may pin to the exact commit or the version.
   # uses: compf/JavaDocEvaluator@ef07e0f2b82a4db72acce832a7602668724ee6c7
-        uses: compf/JavaDocEvaluator@v1.0.1
+        uses: compf/JavaDocEvaluator@v1.0.2
