@@ -39,4 +39,4 @@ jobs:
   # uses: compf/JavaDocEvaluator@ef07e0f2b82a4db72acce832a7602668724ee6c7
         uses: compf/JavaDocEvaluator@action
         with:
-          global_threshold: 80
+          global_threshold: 20
