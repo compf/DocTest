@@ -37,4 +37,4 @@ jobs:
         uses: EndBug/add-and-commit@v7.5.0
         with:
           add: .evaluator_last_state.txt
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          
