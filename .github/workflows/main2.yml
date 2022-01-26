@@ -32,7 +32,7 @@ jobs:
   # uses: compf/JavaDocEvaluator@ef07e0f2b82a4db72acce832a7602668724ee6c7
         uses: compf/DocEvaluator@action
         with:
-          global_threshold: 90
+          global_threshold: 10
       - name: Add & Commit
         if: always()
         uses: EndBug/add-and-commit@v7.5.0
