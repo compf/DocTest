@@ -1,44 +1,151 @@
-# This is a basic workflow to help you get started with Actions
-
-name: CI
-
-# Controls when the workflow will run
+name: Check documentation
 on:
-  workflow_dispatch:
-  # Triggers the workflow on push or pull request events but only for the master branch
+  workflow_dispatch: {}
   push:
-    branches: [ master ]
+    branches:
+      - master
+      - main
   pull_request:
-    branches: [ master ]
-
-  # Allows you to run this workflow manually from the Actions tab
-  
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+    branches:
+      - master
+      - main
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      
-      - name: "install hunspell"
-        run: "sudo apt-get install hunspell"
-
-
-      - name: Javadoc_evaluator
-  # You may pin to the exact commit or the version.
-  # uses: compf/JavaDocEvaluator@ef07e0f2b82a4db72acce832a7602668724ee6c7
+      - name: DocEvaluator
         uses: compf/DocEvaluator@action
         with:
-          global_threshold: 10
-      - name: Add & Commit
+          include: |-
+            [
+              "*.java"
+            ]
+          exclude: "[]"
+          metrics: |-
+            [
+              {
+                "weight": 1,
+                "metric_name": "simple_comment",
+                "params": {
+                  "getter_pattern": "(get.*)|(is.*)",
+                  "setter_pattern": "set.*",
+                  "ignore_getter_setter": false
+                },
+                "unique_name": "simple_comment_0"
+              },
+              {
+                "weight": 1,
+                "metric_name": "public_members_only",
+                "params": {
+                  "getter_pattern": "(get.*)|(is.*)",
+                  "setter_pattern": "set.*",
+                  "ignore_getter_setter": false
+                },
+                "unique_name": "public_members_only_0"
+              },
+              {
+                "weight": 1,
+                "metric_name": "large_method_commented",
+                "params": {
+                  "ignore_lines": [
+                    "",
+                    "{",
+                    "}"
+                  ],
+                  "k": 0.2
+                },
+                "unique_name": "large_method_commented_0"
+              },
+              {
+                "weight": 1,
+                "metric_name": "method_fully_documented",
+                "params": {},
+                "unique_name": "method_fully_documented_0"
+              },
+              {
+                "weight": 1,
+                "metric_name": "commented_lines_ratio",
+                "params": {
+                  "ignore_ines": [
+                    "",
+                    "{",
+                    "}"
+                  ]
+                },
+                "unique_name": "commented_lines_ratio_0"
+              },
+              {
+                "weight": 1,
+                "metric_name": "flesch",
+                "params": {
+                  "consider_tags": false
+                },
+                "unique_name": "flesch_0"
+              },
+              {
+                "weight": 1,
+                "metric_name": "comment_name_coherence",
+                "params": {
+                  "upper_theshold": 0.5,
+                  "lower_threshold": 0,
+                  "levenshtein_distance": 1
+                },
+                "unique_name": "comment_name_coherence_0"
+              },
+              {
+                "weight": 1,
+                "metric_name": "certain_terms",
+                "params": {
+                  "consider_tags": false,
+                  "k": 0.1,
+                  "levenshtein_distance": 1,
+                  "terms": [
+                    "aka",
+                    "e.g.",
+                    "viz",
+                    "i.e."
+                  ],
+                  "use_default_terms_too": false
+                },
+                "unique_name": "certain_terms_0"
+              },
+              {
+                "weight": 1,
+                "metric_name": "formatting_good",
+                "params": {
+                  "accept_no_formatting": true,
+                  "only_public": true,
+                  "k": 0.2,
+                  "allowed_tags": [],
+                  "max_lines_no_formatting": 2
+                },
+                "unique_name": "formatting_good_0"
+              },
+              {
+                "weight": 1,
+                "metric_name": "spelling",
+                "params": {
+                  "additional_words": [],
+                  "k": 0.05,
+                  "dictionary_path": ""
+                },
+                "unique_name": "spelling_0"
+              }
+            ]
+          absolute_threshold: 20
+          metric_result_builder: default_builder
+          file_result_builder: default_builder
+          component_result_builder: default_builder
+          parser: java
+          path_weights: "[]"
+          component_weights: "[]"
+          default_path_weight: 1
+          default_component_weight: 1
+          state_manager: file
+          relative_threshold: 30
+      - name: Add & commit
         if: always()
         uses: EndBug/add-and-commit@v7.5.0
         with:
-          add: .evaluator_last_state.txt
-          
+          add: evaluator_last_state.txt
