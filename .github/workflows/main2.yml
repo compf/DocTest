@@ -134,9 +134,7 @@ jobs:
               }
             ]
           absolute_threshold: 20
-          metric_result_builder: default_builder
-          file_result_builder: default_builder
-          component_result_builder: default_builder
+          builder: default_builder
           parser: java
           path_weights: "[]"
           component_weights: "[]"
