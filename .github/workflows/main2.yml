@@ -11,6 +11,7 @@ on:
       - main
 jobs:
   build:
+    name: "check doc"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
