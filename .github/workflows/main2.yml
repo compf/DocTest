@@ -133,7 +133,7 @@ jobs:
                 "unique_name": "spelling_0"
               }
             ]
-          absolute_threshold: 20
+          absolute_threshold: 100
           builder: default_builder
           parser: java
           path_weights: "[]"
