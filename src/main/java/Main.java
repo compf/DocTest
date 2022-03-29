@@ -1,4 +1,6 @@
 public class Main {
+    /**
+    */
     public static void main(String... array){
         CommentClass myClass=new CommentClass();
         System.out.println(myClass.commented(2,3));
