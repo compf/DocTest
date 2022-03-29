@@ -34,8 +34,7 @@ jobs:
                   "ignore_getter_setter": false
                 },
                 "unique_name": "simple_comment_0"
-              },
-         
+              }
             ]
           absolute_threshold: 50
           builder: default_builder
